@@ -22,21 +22,18 @@ function main () {
 }
 
 function processFile (file) {
-  fs.readFile(file, (err, data) => {
-    if (err) {
-      console.error('Need a adecuate file for JSON decoding or encoding')
-      process.exit(1)
-    }
-    const content = data
-
-    return content
-  })
+  const content = fs.readFileSync(file, 'utf8')
+  return content
 }
 
-function encode () {
-  console.log('encoding')
+function encode (arg) {
+  const encoded = arg
+  console.log('encoding: ', encoded)
+  return encoded
 }
 
-function decode () {
-  console.log('decoding')
+function decode (arg) {
+  const decoded = JSON.parse(arg)
+  console.log('decoding: ', decoded)
+  return decoded
 }
