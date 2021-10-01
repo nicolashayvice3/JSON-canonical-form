@@ -28,12 +28,12 @@ function processFile (file) {
 
 function encode (arg) {
   const encoded = arg
-  console.log('encoding: ', encoded)
-  return encoded
+  console.log('encoding: ', typeof (encoded), encoded)
+  process.exit(0)
 }
 
 function decode (arg) {
   const decoded = JSON.parse(arg)
-  console.log('decoding: ', decoded)
-  return decoded
+  console.log('decoding: ', typeof (decoded), decoded)
+  process.exit(0)
 }
