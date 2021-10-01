@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
-        "target": "es6",
+        "target": "esnext",
+        "watch": true,
         "module": "commonjs",
         "moduleResolution": "node",
         "declaration": true,
@@ -30,12 +31,6 @@
             "ScriptHost"
         ]
     },
-    "include": [
-        "src/**/*.ts",
-        "cli/**/*",
-        "tests/**/*.ts",
-        "examples/**/*.ts",
-    ],
     "exclude": [
         "node_modules",
         "**/*.test.ts"
