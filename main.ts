@@ -6,7 +6,14 @@ main()
 
 function main () {
   const processedFile = processFile(file)
-  encode(processedFile); decode(processedFile); process.exit(0)
+
+  const encoded = encode(processedFile)
+  console.log('encoded-main: ', encoded)
+
+  const decoded = decode(encoded)
+  console.log('decoded-main: ', decoded)
+
+  return decoded // process.exit(0)
 }
 
 function processFile (file) {
@@ -15,11 +22,13 @@ function processFile (file) {
 }
 
 function encode (arg) {
-  const encoded = arg
+  const encoded = JSON.stringify(arg)
   console.log('encoding: ', typeof (encoded), encoded)
+  return encoded
 }
 
 function decode (arg) {
   const decoded = JSON.parse(arg)
   console.log('decoding: ', typeof (decoded), decoded)
+  return decoded
 }
