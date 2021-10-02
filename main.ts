@@ -2,23 +2,11 @@ const fs = require('fs')
 
 const file = process.argv[2]
 
-const action = process.argv[3]
-
 main()
 
 function main () {
   const processedFile = processFile(file)
-  switch (action) {
-    case 'encode':
-      encode(processedFile)
-      break
-    case 'decode':
-      decode(processedFile)
-      break
-    default:
-      console.error('Function requires encode or decode, try again')
-      process.exit(1)
-  }
+  encode(processedFile); decode(processedFile); process.exit(0)
 }
 
 function processFile (file) {
@@ -29,11 +17,9 @@ function processFile (file) {
 function encode (arg) {
   const encoded = arg
   console.log('encoding: ', typeof (encoded), encoded)
-  process.exit(0)
 }
 
 function decode (arg) {
   const decoded = JSON.parse(arg)
   console.log('decoding: ', typeof (decoded), decoded)
-  process.exit(0)
 }
