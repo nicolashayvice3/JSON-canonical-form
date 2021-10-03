@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
-const fs = require('fs')
+import { canonicalize } from 'json-canonicalize'
+
+import fs from 'fs'
 
 const file = process.argv[2]
 
@@ -30,7 +32,7 @@ function encode (arg) {
 }
 
 function decode (arg) {
-  const decoded = JSON.stringify(arg)
+  const decoded = canonicalize(arg)
   // console.log('decoding: ', typeof (decoded), decoded)
   return decoded
 }
