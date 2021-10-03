@@ -22,14 +22,18 @@ function main () {
     }
     const itemStringy = JSON.stringify(item)
     if (itemStringy.startsWith('"\\u')) {
-      // console.log('bye', itemStringy)
       let capital = itemStringy.slice(3)
       capital = capital.toUpperCase()
       const string = '"\\u'
       const stringCapital = string.concat(capital.toString())
+    }
+    if (itemStringy.startsWith('{"\\u')) {
+      let capital = itemStringy.slice(4)
+      capital = capital.toUpperCase()
+      const string = '{"\\u'
+      const stringCapital = string.concat(capital.toString())
       console.log('bye', stringCapital)
     }
-  
   }
   const decoded = decode(encoded)
 
