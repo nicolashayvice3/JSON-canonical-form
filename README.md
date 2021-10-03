@@ -14,6 +14,7 @@ This specification defines a unique canonical form for **every** JSON value, the
 - [Implementations](#implementations)
   * [Validation](#validation)
 - [Originial project link](#Original project link)
+- [My approach](#My approach)
 
 <!-- tocstop -->
 
