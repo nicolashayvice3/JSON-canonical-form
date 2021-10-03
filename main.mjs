@@ -21,14 +21,6 @@ function main () {
     }
   }
 
-  for (const [key, value] of Object.entries(encoded)) {
-    console.log('KEY: ', JSON.stringify(key), '\nVALUE: ', value)
-    if (encoded[key].startsWith('\\u')) {
-      let capital = encoded[key].slice(2)
-      capital = capital.toUpperCase()
-    }
-  }
-
   const decoded = decode(encoded)
 
   console.log(decoded); process.exit(0)
