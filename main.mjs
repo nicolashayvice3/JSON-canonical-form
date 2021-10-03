@@ -15,12 +15,22 @@ function main () {
   const encoded = encode(processedFile)
 
   for (let i = 0; i < encoded.length; i++) {
-    if (typeof encoded[i] === 'number') {
-      const longNumber = toFixed(encoded[i])
+    const item = encoded[i]
+    if (typeof item === 'number') {
+      const longNumber = toFixed(item)
       encoded.splice(i, 1, longNumber)
     }
+    const itemStringy = JSON.stringify(item)
+    if (itemStringy.startsWith('"\\u')) {
+      // console.log('bye', itemStringy)
+      let capital = itemStringy.slice(3)
+      capital = capital.toUpperCase()
+      const string = '"\\u'
+      const stringCapital = string.concat(capital.toString())
+      console.log('bye', stringCapital)
+    }
+  
   }
-
   const decoded = decode(encoded)
 
   console.log(decoded); process.exit(0)
