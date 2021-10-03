@@ -16,12 +16,19 @@ function main () {
 
   for (let i = 0; i < encoded.length; i++) {
     if (typeof encoded[i] === 'number') {
-      // console.log('short:', encoded[i])
       const longNumber = toFixed(encoded[i])
       encoded.splice(i, 1, longNumber)
-      // console.log('loong:', longNumber)
     }
   }
+
+  for (const [key, value] of Object.entries(encoded)) {
+    console.log('KEY: ', JSON.stringify(key), '\nVALUE: ', value)
+    if (encoded[key].startsWith('\\u')) {
+      let capital = encoded[key].slice(2)
+      capital = capital.toUpperCase()
+    }
+  }
+
   const decoded = decode(encoded)
 
   console.log(decoded); process.exit(0)
