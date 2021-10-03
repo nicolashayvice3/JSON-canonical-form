@@ -14,10 +14,6 @@ This specification defines a unique canonical form for **every** JSON value, the
 - [Implementations](#implementations)
   * [Validation](#validation)
 - [Prior Art](#prior-art)
-- [Changelog](#changelog)
-  * [v1.0.0 (2017-10-17)](#v100-2017-10-17)
-  * [v1.0.1 (2018-07-01)](#v101-2018-07-01)
-  * [v1.0.2 (2019-04-14)](#v102-2019-04-14)
 
 <!-- tocstop -->
 
