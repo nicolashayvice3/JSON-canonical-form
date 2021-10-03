@@ -73,6 +73,10 @@ This repository can be used to validate any implementation.
   3. Invoke `./test.sh /path/to/executable` from this repository, substituting the path to the above executable in the first argument.
   4. `test.sh` will provide known input and look for expected output, printing the results, exiting with a status of 0 if and only if the executable (and therefore the candidate implementation) adheres to this specification.
 
-## Orignial project link -
+## Orignial project link
 
 https://github.com/gibson042/canonicaljson-spec
+
+## My approach 
+
+First of all it is not finished, it currently passes all whitespace and malformed tests. I have tried to implemented the specifications of the definition in tokens yet I encountereda few problems during so. Nevertheless some of them pass, for example string test - short-escapes; while on others I got quite close but did not complete them as I encountered some problems. Specifically with string test - other-control-escapes; the implementation of the definition was perfect yet once I JSON.parse() the final work it would go back to square one. Will try to solve this problem or ask for help/guidance from someone. Overall it was a great experience and a learnt a lot.
