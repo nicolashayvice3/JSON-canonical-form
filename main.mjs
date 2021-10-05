@@ -22,11 +22,22 @@ function main () {
     }
     const itemStringy = JSON.stringify(item)
     if (itemStringy.startsWith('"\\u')) {
-      let capital = itemStringy.slice(3)
-      capital = capital.toUpperCase()
-      const string = '"\\u'
-      const stringCapital = string.concat(capital.toString())
-      encoded.splice(i, 1, JSON.parse(stringCapital))
+      if (itemStringy.length === 14) {
+        const upper = itemStringy.toUpperCase()
+        let lowerU = upper.charAt(2).toLowerCase() + upper.slice(3)
+        lowerU = lowerU.slice(7, 14)
+        const lowerU2 = upper.charAt(8).toLowerCase() + upper.slice(9)
+        const string = '"\\u'
+        let finalItem = `${string}${lowerU}\\${lowerU2}`
+        finalItem = finalItem.replace(/"/g, '')
+        encoded.splice(i, 1, JSON.parse(`"${finalItem}"`))
+      } else {
+        let capital = itemStringy.slice(3)
+        capital = capital.toUpperCase()
+        const string = '"\\u'
+        const stringCapital = string.concat(capital.toString())
+        encoded.splice(i, 1, JSON.parse(stringCapital))
+      }
     }
     if (itemStringy.startsWith('{"\\u')) {
       let capital = itemStringy.slice(4)
