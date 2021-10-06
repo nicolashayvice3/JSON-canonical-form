@@ -42,13 +42,14 @@ function main () {
     if (itemStringy.startsWith('{"\\u')) {
       if (itemStringy.length === 18) {
         const upper = itemStringy.toUpperCase()
-        let lowerU = upper.charAt(2).toLowerCase() + upper.slice(3)
-        lowerU = lowerU.slice(7, 14)
-        const lowerU2 = upper.charAt(8).toLowerCase() + upper.slice(9)
-        const string = '{"\\u'
-        let finalItem = `${string}${lowerU}\\${lowerU2}`
-        finalItem = finalItem.replace(/"/g, '')
-        encoded.splice(i, 1, JSON.parse(`"${finalItem}"`))
+        let lowerU = upper.charAt(3).toLowerCase() + upper.slice(4)
+        let lowerU2 = lowerU.slice(6, 15)
+        lowerU2 = lowerU2.charAt(0).toLowerCase() + lowerU2.slice(1)
+        const string = '{"\\'
+        lowerU = lowerU.slice(0, 6)
+        const finalUString = lowerU.concat(lowerU2)
+        const finalItem = `${string}${finalUString}`
+        encoded.splice(i, 1, JSON.parse(finalItem))
       } else {
         let capital = itemStringy.slice(4)
         capital = capital.toUpperCase()
