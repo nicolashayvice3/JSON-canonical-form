@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { canonicalize } from 'json-canonicalize'
+// import { canonicalize } from 'json-canonicalize'
 
 import fs from 'fs'
 
@@ -61,7 +61,7 @@ function main () {
   }
   const decoded = decode(encoded)
 
-  console.log(decoded); process.exit(0)
+  console.log('Result: ', decoded); process.exit(0)
 }
 
 function processFile (file) {
@@ -71,13 +71,13 @@ function processFile (file) {
 
 function encode (arg) {
   const encoded = JSON.parse(arg)
-  // console.log('encoding: ', typeof (encoded), encoded)
+  console.log('encoding: ', typeof (encoded), encoded)
   return encoded
 }
 
 function decode (arg) {
   const decoded = canonicalize(arg)
-  // console.log('decoding: ', typeof (decoded), decoded)
+  console.log('decoding: ', typeof (decoded), decoded)
   return decoded
 }
 
@@ -97,4 +97,48 @@ function toFixed (x) {
     }
   }
   return x
+}
+
+function canonicalize (obj) {
+  let buffer = ''
+
+  serialize(obj)
+
+  return buffer
+
+  function serialize (object) {
+    if (
+      object === null ||
+      typeof object !== 'object' ||
+      object.toJSON != null
+    ) {
+      buffer += JSON.stringify(object)
+    } else if (Array.isArray(object)) {
+      buffer += '['
+      let next = false
+      object.forEach((element) => {
+        if (next) {
+          buffer += ','
+        }
+        next = true
+        serialize(element)
+      })
+      buffer += ']'
+    } else {
+      buffer += '{'
+      const vKeys = Object.keys(object).sort()
+      vKeys.forEach((property, index) => addProp(object, property, index))
+      buffer += '}'
+    }
+  }
+
+  function addProp (object, property, index) {
+    if (index > 0) {
+      buffer += ','
+    }
+
+    buffer += JSON.stringify(property)
+    buffer += ':'
+    serialize(object[property])
+  }
 }
