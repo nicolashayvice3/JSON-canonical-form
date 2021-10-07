@@ -44,7 +44,6 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
     "jest": "^26.6.3",
-    "json-canonicalize": "^1.0.4",
     "ts-jest": "^26.5.4",
     "ts-node": "^9.1.1",
     "typedoc": "^0.20.35",
