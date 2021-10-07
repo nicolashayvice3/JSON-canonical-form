@@ -61,7 +61,7 @@ function main () {
   }
   const decoded = decode(encoded)
 
-  console.log('Result: ', decoded); process.exit(0)
+  console.log(decoded); process.exit(0)
 }
 
 function processFile (file) {
@@ -107,6 +107,7 @@ function canonicalize (obj) {
   return buffer
 
   function serialize (object) {
+    console.log('serialize: ', object)
     if (
       object === null ||
       typeof object !== 'object' ||
